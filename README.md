@@ -1,6 +1,7 @@
 # Roadmap Project - Blog API
 
 This is a RESTful API for a blog application, built using Flask. It is designed to handle CRUD operations for blog posts.
+You can find the original project idea here: https://roadmap.sh/projects/blogging-platform-api
 
 ## Features
 

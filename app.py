@@ -52,13 +52,13 @@ def get_post(post_id):
     else:
         return jsonify({"error":"Not Found"}), 404
     
-@app.get('/posts/<int:post_id>')
-def get_post(post_id):
-    post = Post.query.get(post_id)
-    if post:
-        return jsonify(post.to_dict())
-    else:
-        return jsonify({"error":"Not Found"}), 404
+# @app.get('/posts/<str:post_id>')
+# def get_post(post_id):
+#     post = Post.query.get(post_id)
+#     if post:
+#         return jsonify(post.to_dict())
+#     else:
+#         return jsonify({"error":"Not Found"}), 404
 
 # UPDATED POST
 @app.post('/posts')
