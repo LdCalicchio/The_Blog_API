@@ -29,3 +29,13 @@ This is a RESTful API for a blog application, built using Flask. It is designed 
    ```bash
    flask run
    ```
+
+5. **Post structure**
+   ```json
+   {
+     "title": "Example of blog post",
+     "content": "This is the content of the blog post.",
+     "category": "Any",
+     "tags": ["Example", "Post"]
+   }
+   ```
