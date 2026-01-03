@@ -26,7 +26,17 @@ You can find the original project idea here: https://roadmap.sh/projects/bloggin
    pip install -r requirements.txt
    ```
 
-4. **Start the server**
+4. **Configure the Database**
+   1. Create a database named `the_blog_api` in your MySQL server.
+   2. Create a `.env` file in the root directory based on your credentials:
+      ```env
+      DB_USER=root
+      DB_PASSWORD=your_password
+      DB_HOST=localhost
+      DB_NAME=the_blog_api
+      ```
+
+5. **Start the server**
    ```bash
    flask run
    ```

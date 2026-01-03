@@ -1,18 +1,23 @@
+import os
+from urllib.parse import quote_plus
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 
 # Create Database
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///posts.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql+pymysql://{os.getenv('DB_USER')}:{quote_plus(os.getenv('DB_PASSWORD'))}@{os.getenv('DB_HOST')}/{os.getenv('DB_NAME')}"
 
 db = SQLAlchemy(app)
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
-    content = db.Column(db.String(), nullable=False)
+    content = db.Column(db.Text, nullable=False)
     category = db.Column(db.String(50), nullable=False)
     tags = db.Column(db.JSON, nullable=False)
     createdAt = db.Column(db.DateTime, default=datetime.now)
