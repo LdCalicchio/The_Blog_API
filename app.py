@@ -10,7 +10,15 @@ load_dotenv()
 app = Flask(__name__)
 
 # Create Database
-app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql+pymysql://{os.getenv('DB_USER')}:{quote_plus(os.getenv('DB_PASSWORD'))}@{os.getenv('DB_HOST')}/{os.getenv('DB_NAME')}"
+db_user = os.getenv('DB_USER')
+db_password = os.getenv('DB_PASSWORD')
+db_host = os.getenv('DB_HOST')
+db_name = os.getenv('DB_NAME')
+
+if not all([db_user, db_password, db_host, db_name]):
+    raise ValueError("Missing database configuration. Please check your .env file.")
+
+app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql+pymysql://{db_user}:{quote_plus(db_password)}@{db_host}/{db_name}"
 
 db = SQLAlchemy(app)
 
